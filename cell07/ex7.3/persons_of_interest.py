@@ -2,9 +2,12 @@ def famous_births(historical_figures):
     # เรียงลำดับพจนานุกรมโดยใช้ค่าในคีย์ 'date_of_birth'
     sorted_figures = sorted(historical_figures.items(), key=lambda x: x[1]['date_of_birth'])
     
-    # แสดงผลแต่ละรายการในรายการที่เรียงลำดับแล้ว
-    for _, figure in sorted_figures:
+    # ใช้ while loop แทน for loop
+    i = 0
+    while i < len(sorted_figures):
+        _, figure = sorted_figures[i]
         print(f"{figure['name']} เป็นนักวิทยาศาสตร์ที่ยิ่งใหญ่ที่เกิดในปี {figure['date_of_birth']}.")
+        i += 1  # เพิ่มค่า i เพื่อวนลูปต่อไป
 
 # ตัวอย่างพจนานุกรมของนักวิทยาศาสตร์หญิง
 women_scientists = {
