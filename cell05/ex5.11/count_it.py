@@ -5,5 +5,8 @@ if len(sys.argv) == 9:
 else:
     print(f"parameters: {len(sys.argv) - 9}")
     
-    for param in sys.argv[1:]:
-        print(f"{param}: {len(param)}")
+    i = 1
+    while i < len(sys.argv):
+        print(f"{sys.argv[i]}: {len(sys.argv[i])}")
+        i += 1
+
