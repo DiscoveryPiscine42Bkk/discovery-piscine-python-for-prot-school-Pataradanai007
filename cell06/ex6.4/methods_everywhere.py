@@ -16,13 +16,16 @@ def main():
         print("none")
         return
     
-    for arg in args:
+    i = 0
+    while i < len(args):
+        arg = args[i]
         if len(arg) > 8:
             shrink(arg)
         elif len(arg) < 8:
             enlarge(arg)
         else:
             print(arg)
+        i += 1  # Move to the next argument
 
 if __name__ == "__main__":
     main()
