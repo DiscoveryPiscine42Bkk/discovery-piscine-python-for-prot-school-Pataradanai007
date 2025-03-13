@@ -1,5 +1,5 @@
 def checkmate(board):  
-    rows = board.splitlines()
+    rows = board.splitlines() #รับกระดานหมากรุก และแยกเป็นแถว ๆ โดยทำให้หลายเป็นลิสต์ของบรรทัด
 
     # หาตำแหน่งของราชา
     king_position = next(((i, row.index('K')) for i, row in enumerate(rows) if 'K' in row), None)
