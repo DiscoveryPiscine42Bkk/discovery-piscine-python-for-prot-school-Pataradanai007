@@ -1,18 +1,24 @@
 def checkmate(board):  
-    rows = board.splitlines() #รับกระดานหมากรุก และแยกเป็นแถว ๆ โดยทำให้หลายเป็นลิสต์ของบรรทัด
+    rows = board.splitlines() #แยกบรรทัดของกระดานเป็นลิสต์
 
-    # หาตำแหน่งของราชา
-    king_position = next(((i, row.index('K')) for i, row in enumerate(rows) if 'K' in row), None)
-    
+    # หาตำแหน่งของราชาโดยใช้ while loop
+    i = 0                 #ใช้ตัวแปร i ไล่ดูแต่ละแถว while loop
+    king_position = None
+    while i < len(rows): 
+        if 'K' in rows[i]: # ถ้าเจอ K ในแถวนั้น ให้บันทึกต่ำแหน่ง
+            king_position = (i, rows[i].index('K'))
+            break
+        i += 1
+
     if not king_position:
-        print("Error: King not found.")
+        print("Error: King not found.") #ถ้าไม่พบ K ให้ขึ้น King not found
         return
 
     x, y = king_position  # ตำแหน่งของราชา
 
-    # ฟังก์ชันตรวจสอบการโจมตี
-    def check_direction(dx, dy, pieces):
-        i, j = x + dx, y + dy
+    # ฟังก์ชันตรวจสอบการโจมตี ของ เรือ บิชอป ราชินี
+    def check_direction(dx, dy, pieces): #ตรวจสอบไปตามแนว x,y
+        i, j = x + dx, y + dy 
         while 0 <= i < len(rows) and 0 <= j < len(rows[0]):
             if rows[i][j] in pieces:
                 return True
@@ -37,3 +43,4 @@ def checkmate(board):
         return  
 
     print("Fail")
+
