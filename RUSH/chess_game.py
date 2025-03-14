@@ -1,14 +1,28 @@
 def checkmate(board):  
-    rows = board.splitlines() #แยกบรรทัดของกระดานเป็นลิสต์
-
+    rows = board.split() #แยกบรรทัดของกระดานเป็นลิสต์
+    # print(rows)
     # หาตำแหน่งของราชาโดยใช้ while loop
     i = 0                 #ใช้ตัวแปร i ไล่ดูแต่ละแถว while loop
+    j = 0
     king_position = None
-    while i < len(rows): 
-        if 'K' in rows[i]: # ถ้าเจอ K ในแถวนั้น ให้บันทึกต่ำแหน่ง
-            king_position = (i, rows[i].index('K'))
-            break
+    king_Big = 0
+    while i < len(rows):
+        j=0
+        while j < len(rows[i]):
+             #if 'K' in rows[i]: 
+            #king_position = (i, rows[i].index('K'))
+            # print(rows[i][j])
+            if rows[i][j] == 'K': # ถ้าเจอ K ในแถวนั้น ให้บันทึกต่ำแหน่ง
+       
+                king_position = [i, j]
+                king_Big += 1
+            j+=1
+
         i += 1
+    
+    if king_Big > 1 :
+        print("Error : King > 1")
+        return
 
     if not king_position:
         print("Error: King not found.") #ถ้าไม่พบ K ให้ขึ้น King not found
@@ -43,4 +57,3 @@ def checkmate(board):
         return  
 
     print("Fail")
-
